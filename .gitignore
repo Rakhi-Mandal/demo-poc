@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Playwright outputs
+test-results/
+playwright-report/
+
+# Allure outputs
+allure-results/
+allure-report/
+
+# Healer runtime files
+*.healing.lock
+*.running-*.lock
+*.sync-*.tmp
+fixtures/framework_location.json
+
+# Local environment
+.env

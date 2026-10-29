@@ -1,0 +1,60 @@
+const { defineConfig } = require('@playwright/test');
+
+module.exports = defineConfig({
+  testDir: '.',
+  testMatch: '**/*.js',
+  timeout: 600000,
+
+  expect: {
+    timeout: 10000,
+  },
+
+  reporter: [
+    ['line'],
+    ['json', { outputFile: 'test-results/report.json' }],
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['allure-playwright', { resultsDir: 'allure-results' }],
+    ['./fixtures/allure_html_reporter.js', { resultsDir: 'allure-results', outputFolder: 'allure-report' }],
+  ],
+
+  use: {
+    actionTimeout: 60000,
+    navigationTimeout: 60000,
+    headless: process.env.HEADLESS !== 'false',
+    screenshot: 'only-on-failure',
+    trace: 'on',
+
+    launchOptions: {
+      slowMo: 1000,
+    },
+  },
+
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        browserName: 'chromium',
+        channel: 'chrome',
+      },
+    },
+    {
+      name: 'msedge',
+      use: {
+        browserName: 'chromium',
+        channel: 'msedge',
+      },
+    },
+    {
+      name: 'firefox',
+      use: {
+        browserName: 'firefox',
+      },
+    },
+    {
+      name: 'webkit',
+      use: {
+        browserName: 'webkit',
+      },
+    },
+  ],
+});

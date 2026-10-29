@@ -1,0 +1,17 @@
+{
+  "name": "playwright-generated-framework",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test",
+    "test:sanity": "playwright test sanity --project=chromium",
+    "test:regression": "playwright test regression --project=chromium"
+  },
+  "devDependencies": {
+    "@babel/parser": "^8.0.4",
+    "@playwright/test": "^1.64.1",
+    "allure": "^3.21.0",
+    "allure-playwright": "^3.14.0",
+    "dotenv": "^16.6.1"
+  }
+}
